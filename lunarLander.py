@@ -1,5 +1,5 @@
-'''almog elharar - 203549407, Yair Baruch - 043463256
-parts of the code were adapted from: https://github.com/awjuliani/DeepRL-Agents/blob/master/Vanilla-Policy.ipynb'''
+
+#parts of the code were adapted from: https://github.com/awjuliani/DeepRL-Agents/blob/master/Vanilla-Policy.ipynb
 
 
 import gym
@@ -94,10 +94,8 @@ def run_episode(agent, sess, env):
         states.append(obsrv_vector)
         # Run the policy network and get a distribution over actions
         action_probs = np.float64(sess.run(agent, feed_dict={observation:obsrv_vector}))
-	#print(action_probs)
 
 	action_probs = np.divide(action_probs,np.sum(action_probs))
-	#print(action_probs)
         # Sample action from distribution
         action = np.random.multinomial(1, np.squeeze(action_probs))
         # Step the environment and get new measurements
